@@ -13,6 +13,9 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
       // converts field types from requests
       transform: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
   await app.listen(3000);
