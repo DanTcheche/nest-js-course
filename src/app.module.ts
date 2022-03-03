@@ -5,10 +5,13 @@ import { CoffeesModule } from './coffees/coffees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import appConfig from './config/app.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      load: [appConfig],
+    }),
     CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'postgres', // type of our database
