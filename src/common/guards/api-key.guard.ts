@@ -21,8 +21,6 @@ export class ApiKeyGuard implements CanActivate {
     if (isPublic) {
       return true;
     }
-    if (authHeader && authHeader.split(' ')[0] === 'Bearer') {
-      return authHeader.split(' ')[1] === this.configService.get('API_KEY');
-    }
+    return authHeader === this.configService.get('API_KEY');
   }
 }
